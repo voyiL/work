@@ -36,6 +36,7 @@ export class UserService {
         }
     }
     async update(id: number, user: UpdateUserDto) {
+        // return await this.userRepo.save(user);
         return await this.userRepo.update(id, user);
     }
     async delete(id: number) {
@@ -44,20 +45,25 @@ export class UserService {
     async findById(id: number): Promise<User> {
         return await this.userRepo.findOne({ where: { id } });
     }
-    async findByEmail(email: string) {
+    async findByEmail(email: string): Promise<User> {
         return await this.userRepo.findOne({ where: { email } });
     }
-    async findAll(): Promise<User[]> {
-        const qb = this.userRepo.createQueryBuilder('user');
-        // qb.where('user');
-        return await qb.execute();
-        // return await this.userRepo.find({
-        //     join: {
-        //         alias: 'user',
-        //         leftJoinAndSelect: {
-        //             roles: 'user.roles'
-        //         } 
-        //     }
-        // });
+    async findAll(): Promise<User[]> { 
+        return await this.userRepo.find();
     }
+    //     const qb = await this.userRepo.createQueryBuilder('user');
+
+    //     return qb
+    //     // const qb = this.userRepo.createQueryBuilder('user');
+    //     // qb.where('user');
+    //     // return await qb.execute();
+    //     // return await this.userRepo.find({
+    //     //     join: {
+    //     //         alias: 'user',
+    //     //         leftJoinAndSelect: {
+    //     //             roles: 'user.roles'
+    //     //         } 
+    //     //     }
+    //     // });
+    // }
 }

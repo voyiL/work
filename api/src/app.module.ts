@@ -9,9 +9,14 @@ import { UserModule } from './user/user.module';
 import { UserRoleModule } from './user-role/user-role.module';
 import { UserRole } from './user-role/entity/user-role.entity';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
+// import { typeOrmConfigAsync } from './config/typeOrm.config';
 
 @Module({
   imports: [
+    // ConfigModule.forRoot({
+    //   envFilePath: ['.env.development.local', '.env.development']
+    // }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

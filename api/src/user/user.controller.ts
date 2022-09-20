@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 @Controller('user')
 export class UserController {
     constructor(private userService: UserService) { }
-    // @UseGuards(AuthGuard('jwt'))
+    @UseGuards(AuthGuard('jwt'))
     @Post('/add')
     createUser(@Body() user: CreateUserDto) {
         return this.userService.create(user);
@@ -31,7 +31,7 @@ export class UserController {
     getUserByEmail(email: string) {
         return this.userService.findByEmail(email);
     }
-    // @UseGuards(AuthGuard('jwt'))
+    @UseGuards(AuthGuard('jwt'))
     @Get()
     getAllUsers() {
         return this.userService.findAll();

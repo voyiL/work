@@ -15,4 +15,6 @@ export class UserDto {
     @IsNotEmpty()
     @MinLength(8)
     password: string;
+    @IsString()
+    refreshToken: string;
 }
